@@ -12,6 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+      'http://localhost/laravel-oficial/public/meseros/add',
+      'http://localhost/laravel-oficial/public/meseros/login',
+      'http://localhost:8000/meseros/add',
+      'http://localhost:8000/meseros/login',
     ];
 }

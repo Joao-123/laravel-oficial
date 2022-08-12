@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MeseroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
+});
+
+Route::post('/mesero/crear', function () {
+  return view('welcome');
+});
+
+// Route::post('/meseros/add', [MeseroController::class, 'store'])->name('meseros.add');
+// Route::post('/meseros/login', [MeseroController::class, 'login'])->name('meseros.login');
+
+// Route::group(['middleware' => ['cors']], function () {
+// //   Rutas a las que se permitirá acceso
+// });
+
+Route::middleware(['cors'])->group(function () {
+  Route::post('/meseros/add', [MeseroController::class, 'store'])->name('meseros.add');
+  Route::post('/meseros/login', [MeseroController::class, 'login'])->name('meseros.login');
 });
