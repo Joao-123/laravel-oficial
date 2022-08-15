@@ -10,6 +10,7 @@ class MeseroController extends Controller
 {
     public function store(Request $request) {
       $data = json_decode($request->getContent());
+
       $mesero = new Mesero();
       $mesero->nombres = $data->nombres;
       $mesero->ci = $data->ci;
@@ -19,6 +20,7 @@ class MeseroController extends Controller
       $mesero-> contrasenia = bcrypt($data->password);
 
       $mesero->save();
+      unset($mesero->contrasenia);
       // $mesero = Mesero::create($request->only(['nombres', 'ci', 'apellidos', 'cell', 'estado']) +
       // [
       //   'contrasenia'=> bcrypt(value: $request->input( key: 'password'))
@@ -27,12 +29,15 @@ class MeseroController extends Controller
     }
 
     public function login(Request $request) {
-      $mesero = Mesero::where('ci', $request->ci)->first();
-      if ($mesero && Hash::check($request->password, $mesero->contrasenia)) {
+      $data = json_decode($request->getContent());
+
+      $mesero = Mesero::where('ci', $data->ci)->first();
+      if ($mesero && Hash::check($data->password, $mesero->contrasenia)) {
         unset($mesero->contrasenia, $mesero->id, $mesero->created_at, $mesero->updated_at);
         return $mesero;
       }else {
-        return 'not found';
+        $mensaje['msj'] = 'not found';
+        return $mensaje;
       }
     }
 }
