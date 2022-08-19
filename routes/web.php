@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MeseroController;
+use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,6 @@ Route::post('/mesero/crear', function () {
 Route::middleware(['cors'])->group(function () {
   Route::post('/meseros/add', [MeseroController::class, 'store'])->name('meseros.add');
   Route::post('/meseros/login', [MeseroController::class, 'login'])->name('meseros.login');
+
+  Route::post('/productos/add', [ProductoController::class, 'store'])->name('productos.add');
 });

@@ -20,7 +20,7 @@ class MeseroController extends Controller
       $mesero-> contrasenia = bcrypt($data->password);
 
       $mesero->save();
-      unset($mesero->contrasenia);
+      unset($mesero->contrasenia, $mesero->id);
       // $mesero = Mesero::create($request->only(['nombres', 'ci', 'apellidos', 'cell', 'estado']) +
       // [
       //   'contrasenia'=> bcrypt(value: $request->input( key: 'password'))
