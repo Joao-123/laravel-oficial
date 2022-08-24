@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meseros', function (Blueprint $table) {
+        Schema::create('piezas', function (Blueprint $table) {
             $table->id();
-            $table->string('ci', 20)->unique();
-            $table->string('nombres', 100);
-            $table->string('apellidos', 100);
-            $table->string('cell', 20);
-            $table->string('contrasenia');
-            $table->enum('estado', ['pendiente', 'activo', 'despedido']);
-            $table->rememberToken();
+            $table->integer('numero');
+            $table->integer('precio');
+            $table->string('descripcion', 100);
             $table->timestamps();
-          });
+        });
     }
 
     /**
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meseros');
+        Schema::dropIfExists('piezas');
     }
 };

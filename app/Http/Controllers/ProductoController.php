@@ -15,10 +15,16 @@ class ProductoController extends Controller
     $producto->precio = $data->precio;
     $producto-> stock = $data->stock;
     $producto-> estado = 'disponible';
+    $producto-> manilla = $data->manilla;
 
     $producto->save();
 
     unset($producto->id);
     return $producto;
+  }
+
+  public function getAll() {
+    $productos = Producto::where('estado', 'disponible')->get();
+    return $productos;
   }
 }

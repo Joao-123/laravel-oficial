@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->integer('precio');
             $table->integer('stock');
+            $table->string('manilla', 100);
             $table->enum('estado', ['disponible', 'agotado', 'eliminado']);
             $table->timestamps();
         });

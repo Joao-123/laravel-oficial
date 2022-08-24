@@ -13,18 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mujeres', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('ci', 20)->unique();
             $table->string('nombres', 100);
             $table->string('apellidos', 100);
             $table->string('cell', 20);
             $table->integer('edad');
-            $table->string('contrasenia')->nullable();
-            $table->enum('estado', ['activo', 'despedido']);
+            $table->unsignedBigInteger('rol');
+            $table->string('contrasenia');
+            $table->enum('estado', ['pendiente', 'activo', 'despedido']);
             $table->rememberToken();
             $table->timestamps();
-        });
+
+            $table->foreign('rol')->references('id')->on('roles');
+          });
     }
 
     /**
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mujeres');
+        Schema::dropIfExists('usuarios');
     }
 };

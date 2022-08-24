@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\MeseroController;
+use App\Http\Controllers\MujerController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,20 +20,23 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::post('/mesero/crear', function () {
+Route::post('/usuario/crear', function () {
   return view('welcome');
 });
 
-// Route::post('/meseros/add', [MeseroController::class, 'store'])->name('meseros.add');
-// Route::post('/meseros/login', [MeseroController::class, 'login'])->name('meseros.login');
+// Route::post('/usuarios/add', [UsuarioController::class, 'store'])->name('usuarios.add');
+// Route::post('/usuarios/login', [UsuarioController::class, 'login'])->name('usuarios.login');
 
 // Route::group(['middleware' => ['cors']], function () {
 // //   Rutas a las que se permitirá acceso
 // });
 
 Route::middleware(['cors'])->group(function () {
-  Route::post('/meseros/add', [MeseroController::class, 'store'])->name('meseros.add');
-  Route::post('/meseros/login', [MeseroController::class, 'login'])->name('meseros.login');
+  Route::post('/usuarios/add', [UsuarioController::class, 'store'])->name('usuarios.add');
+  Route::post('/usuarios/login', [UsuarioController::class, 'login'])->name('usuarios.login');
 
   Route::post('/productos/add', [ProductoController::class, 'store'])->name('productos.add');
+  Route::get('/productos/all', [ProductoController::class, 'getAll'])->name('productos.all');
+
+  Route::get('/mujeres/all', [MujerController::class, 'getAll'])->name('mujeres.all');
 });

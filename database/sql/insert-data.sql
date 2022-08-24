@@ -1,0 +1,1 @@
+INSERT INTO `mujeres` (`id`, `ci`, `nombres`, `apellidos`, `cell`, `edad`, `contrasenia`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES ('1', '4567456', 'veronica', 'chavez', '2342343', '23', 'asd', 'activo', NULL, NULL, NULL);

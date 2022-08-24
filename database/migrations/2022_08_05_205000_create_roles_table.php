@@ -13,18 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ventas', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero_venta');
-            $table->unsignedBigInteger('usuarios_id');
-            $table->decimal('total', $precision = 8, $scale = 2);
-
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->string('nombre', 100);
             $table->timestamps();
         });
-        
-        // $table->index(['account_id', 'created_at']);
-
     }
 
     /**
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('roles');
     }
 };
