@@ -20,5 +20,8 @@ class VerifyCsrfToken extends Middleware
       'http://localhost:8000/productos/all',
 
       'http://localhost:8000/mujeres/all',
+
+      'http://localhost:8000/ventas/add',
+      'http://localhost:8000/ventas/get/{id}',
     ];
 }

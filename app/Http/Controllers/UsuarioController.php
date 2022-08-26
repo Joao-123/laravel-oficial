@@ -35,7 +35,7 @@ class UsuarioController extends Controller
 
       $usuario = Usuario::where('ci', $data->ci)->first();
       if ($usuario && Hash::check($data->password, $usuario->contrasenia)) {
-        unset($usuario->contrasenia, $usuario->id, $usuario->created_at, $usuario->updated_at);
+        unset($usuario->contrasenia,  $usuario->created_at, $usuario->updated_at);
         return $usuario;
       }else {
         $mensaje['msj'] = 'not found';

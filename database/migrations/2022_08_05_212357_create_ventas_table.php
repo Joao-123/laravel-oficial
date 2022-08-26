@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('numero_venta');
             $table->unsignedBigInteger('usuarios_id');
             $table->decimal('total', $precision = 8, $scale = 2);
+            $table->decimal('ganancia_casa', $precision = 8, $scale = 2);
+            $table->decimal('ganancia_mujeres', $precision = 8, $scale = 2);
 
             $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->timestamps();

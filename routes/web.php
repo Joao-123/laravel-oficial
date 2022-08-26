@@ -3,6 +3,7 @@
 use App\Http\Controllers\MujerController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,7 @@ Route::middleware(['cors'])->group(function () {
   Route::get('/productos/all', [ProductoController::class, 'getAll'])->name('productos.all');
 
   Route::get('/mujeres/all', [MujerController::class, 'getAll'])->name('mujeres.all');
+
+  Route::post('/ventas/add', [VentaController::class, 'store'])->name('ventas.add');
+  Route::get('/ventas/get/{id}', [VentaController::class, 'getByUser'])->name('ventas.get');
 });
