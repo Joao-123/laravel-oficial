@@ -16,7 +16,7 @@ class UsuarioController extends Controller
       $usuario->ci = $data->ci;
       $usuario-> apellidos = $data->apellidos;
       $usuario-> edad = $data->edad;
-      $usuario-> rol = $data->rol;
+      $usuario-> rol_id = $data->rol;
       $usuario-> cell = $data->cell;
       $usuario-> estado = $data->estado;
       $usuario-> contrasenia = bcrypt($data->password);

@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ventas_productos', function (Blueprint $table) {
-          $table->unsignedBigInteger('ventas_id');
-          $table->unsignedBigInteger('productos_id');
+          $table->unsignedBigInteger('venta_id');
+          $table->unsignedBigInteger('producto_id');
 
           $table->integer('cantidad');
           $table->integer('precio_venta');
           $table->integer('descuento');
 
-          $table->foreign('ventas_id')->references('id')->on('ventas');
-          $table->foreign('productos_id')->references('id')->on('productos');
-          $table->index(['ventas_id', 'productos_id']);
+          $table->foreign('venta_id')->references('id')->on('ventas');
+          $table->foreign('producto_id')->references('id')->on('productos');
+          $table->index(['venta_id', 'producto_id']);
         });
     }
 

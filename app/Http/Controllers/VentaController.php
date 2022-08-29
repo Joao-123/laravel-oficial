@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mujer;
 use App\Models\Venta;
 use App\Models\VentaMujer;
 use App\Models\VentaProducto;
@@ -22,19 +23,19 @@ class VentaController extends Controller
     // para solucionar despues
     $venta->numero_venta = 1;
     $venta->ganancia_casa = 1;
-    $venta->ganancia_mujer = 1;
+    $venta->ganancia_mujeres = 1;
 
     $venta->save();
     $out->writeln($venta);
 
     foreach ($data->mujeres as $mujer) {
       $venta_mujer = new VentaMujer();
-      $venta_mujer->ventas_id = $venta->id;
-      $venta_mujer->mujeres_id = $mujer->data->id;
+      $venta_mujer->venta_id = $venta->id;
+      $venta_mujer->mujer_id = $mujer->data->id;
       $venta_mujer->manilla = $mujer->manilla;
 
       // para solucionar-para controlar las manillas que se deben cancelar y cuales ya lo fueron
-      // venta_mujer->estado (pendiente, cancelado)  
+      $venta_mujer->estado = 'pendiente';
 
       $venta_mujer->save();
       $out->writeln($venta_mujer);
@@ -42,8 +43,8 @@ class VentaController extends Controller
 
     foreach ($data->productos as $product) {
       $venta_producto = new VentaProducto();
-      $venta_producto->ventas_id = $venta->id;
-      $venta_producto->productos_id = $product->data->id;
+      $venta_producto->venta_id = $venta->id;
+      $venta_producto->producto_id = $product->data->id;
       $venta_producto->cantidad = $product->cantidad;
       $venta_producto->precio_venta = $product->data->precio;
       if ($product->descuento != null) {
@@ -60,16 +61,24 @@ class VentaController extends Controller
   }
 
   public function getByUser(Request $request) {
-    $ventas = DB::table('ventas')
+    // $ventas = DB::table('ventas')
 
-    ->where('ventas.usuarios_id', '=', $request->id)
+    // ->where('ventas.usuarios_id', '=', $request->id)
 
-    ->join('ventas_mujeres', 'ventas_mujeres.ventas_id', '=', 'ventas.id')
-    ->join('mujeres', 'mujeres.id', '=', 'ventas_mujeres.mujeres_id')
+    // ->join('ventas_mujeres', 'ventas_mujeres.ventas_id', '=', 'ventas.id')
+    // ->join('mujeres', 'mujeres.id', '=', 'ventas_mujeres.mujeres_id')
 
-    ->join('ventas_productos', 'ventas_productos.ventas_id', '=', 'ventas.id')
-    ->join('productos', 'productos.id', '=', 'ventas_productos.productos_id')
+    // ->join('ventas_productos', 'ventas_productos.ventas_id', '=', 'ventas.id')
+    // ->join('productos', 'productos.id', '=', 'ventas_productos.productos_id')
 
+    // ->select('cat_tabulator_histories.id as id',)
+
+    // ->get();
+
+
+    $ventas = Venta::where('ventas.usuarios_id', '=', $request->id)
+    ->with('mujer')
+    ->with('producto')
     ->get();
 
      return $ventas;

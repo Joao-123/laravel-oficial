@@ -10,4 +10,9 @@ class Mujer extends Model
     use HasFactory;
 
     protected $table = 'mujeres';
+
+    public function venta()
+    {
+        return $this->belongsToMany(Venta::class, 'ventas_mujeres');
+    }
 }

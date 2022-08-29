@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('apellidos', 100);
             $table->string('cell', 20);
             $table->integer('edad');
-            $table->unsignedBigInteger('rol');
+            $table->unsignedBigInteger('rol_id');
             $table->string('contrasenia');
             $table->enum('estado', ['pendiente', 'activo', 'despedido']);
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('rol')->references('id')->on('roles');
+            $table->foreign('rol_id')->references('id')->on('roles');
           });
     }
 

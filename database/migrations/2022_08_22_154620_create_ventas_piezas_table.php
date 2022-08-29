@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ventas_piezas', function (Blueprint $table) {
-            $table->unsignedBigInteger('usuarios_id');
-            $table->unsignedBigInteger('piezas_id');
-            $table->unsignedBigInteger('mujeres_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('pieza_id');
+            $table->unsignedBigInteger('mujer_id');
   
             $table->date('fecha');
             $table->time('hora_ingreso', $precision = 0);
@@ -24,9 +24,9 @@ return new class extends Migration
             $table->integer('precio_total');
             $table->integer('descuento');
   
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
-            $table->foreign('piezas_id')->references('id')->on('piezas');
-            $table->foreign('mujeres_id')->references('id')->on('mujeres');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('pieza_id')->references('id')->on('piezas');
+            $table->foreign('mujer_id')->references('id')->on('mujeres');
             $table->timestamps();
         });
     }

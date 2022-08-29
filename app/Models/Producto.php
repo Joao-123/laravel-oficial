@@ -18,4 +18,9 @@ class Producto extends Model
       'stock',
       'estado'
     ];
+
+    public function venta()
+    {
+        return $this->belongsToMany(Venta::class, 'ventas_mujeres');
+    }
 }
