@@ -15,15 +15,24 @@ return new class extends Migration
     {
         Schema::create('mujeres', function (Blueprint $table) {
             $table->id();
-            $table->string('ci', 20)->unique();
-            $table->string('nombres', 100);
-            $table->string('apellidos', 100);
-            $table->string('cell', 20);
+            $table->string('nombre_chica');
             $table->integer('edad');
-            $table->string('contrasenia')->nullable();
-            $table->enum('estado', ['activo', 'despedido']);
-            $table->rememberToken();
+            $table->string('imagen');
             $table->timestamps();
+
+            // $table->id();
+            // $table->integer('ci')->unique();
+            // $table->string('name');
+            // $table->integer('cell');
+            // $table->integer('edad');
+            // $table->string('imagen', 100);
+            // $table->enum('estado', ['activo', 'despedido']);
+            // $table->rememberToken();
+            // $table->timestamps();
+
+            // $table->string('nombres', 100);
+            // $table->string('apellidos', 100);
+            // $table->string('contrasenia')->nullable();
         });
     }
 

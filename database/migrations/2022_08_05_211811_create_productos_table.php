@@ -15,12 +15,25 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 100);
+            $table->string('nombre');
+            $table->integer('costo');
             $table->integer('precio');
-            $table->integer('stock');
-            $table->string('manilla', 100);
-            $table->enum('estado', ['disponible', 'agotado', 'eliminado']);
+            $table->integer('costo_compania');
+            $table->string('manilla');
+            $table->integer('utilidad');
             $table->timestamps();
+
+            // $table->id();
+            // $table->string('nombre', 100);
+            // $table->integer('costo');
+            // $table->integer('precio');
+            // $table->integer('costo_compania');
+            // $table->string('manilla', 100);
+            // $table->integer('utilidad');
+            // $table->enum('estado', ['disponible', 'agotado', 'eliminado']);
+            // $table->timestamps();
+
+            // $table->integer('stock');
         });
     }
 

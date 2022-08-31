@@ -18,8 +18,8 @@ return new class extends Migration
           $table->unsignedBigInteger('producto_id');
 
           $table->integer('cantidad');
-          $table->integer('precio_venta');
-          $table->integer('descuento');
+          // $table->integer('precio_venta');
+          // $table->integer('descuento');
 
           $table->foreign('venta_id')->references('id')->on('ventas');
           $table->foreign('producto_id')->references('id')->on('productos');

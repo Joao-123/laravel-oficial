@@ -15,18 +15,22 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('ci', 20)->unique();
-            $table->string('nombres', 100);
-            $table->string('apellidos', 100);
-            $table->string('cell', 20);
-            $table->integer('edad');
-            $table->unsignedBigInteger('rol_id');
-            $table->string('contrasenia');
-            $table->enum('estado', ['pendiente', 'activo', 'despedido']);
+            $table->integer('ci')->unique()->nullable();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->integer('cell')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('rol_id')->references('id')->on('roles');
+            // $table->string('username', 100);
+            // $table->string('nombres', 100);
+            // $table->string('apellidos', 100);
+            // $table->integer('edad');
+            // $table->enum('estado', ['pendiente', 'activo', 'despedido']);
+            // $table->unsignedBigInteger('rol_id');
+            // $table->foreign('rol_id')->references('id')->on('roles');
           });
     }
 

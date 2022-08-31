@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('ventas_mujeres', function (Blueprint $table) {
           $table->unsignedBigInteger('venta_id');
           $table->unsignedBigInteger('mujer_id');
-          $table->string('manilla', 100);
-          $table->enum('estado', ['pendiente', 'cancelado']);
+          $table->string('manilla');
+          // $table->enum('estado', ['pendiente', 'cancelado']);
 
           // $table->integer('cantidad');
           // $table->integer('precio_venta');
